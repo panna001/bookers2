@@ -18,7 +18,9 @@
           <% end %>
         </li>
         <li>
-          <%= link_to "logout", destroy_user_session_path, method: :delete %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i> logout
+          <% end %>
         </li>
       </ul>
     <% else %>
