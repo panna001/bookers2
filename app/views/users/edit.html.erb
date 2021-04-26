@@ -1,16 +1,19 @@
 <div class="container">
-  <div class="col-6 mx-auto">
-    <h2>User info</h2>
-    <div class="form-group">
-      <%= form_with model: @user do |f| %>
-        <%= f.label :name, "Name" %>
-        <%= f.text_field :name, class: "form-control mb-3" %>
-        <%= f.label :profile_image, "Image" %>
-        <%= f.attachment_field :profile_image, class: "mb-3 d-block" %>
-        <%= f.label :introduction, "Introduction" %>
-        <%= f.text_area :introduction, class: "form-control mb-3" %>
-        <%= f.submit class: "btn btn-secondary" %>
-      <% end %>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <%= render "layouts/error", model:@user %>
+      <h2>User info</h2>
+      <div class="form-group">
+        <%= form_with model: @user, local: true do |f| %>
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name, class: "form-control mb-3" %>
+          <%= f.label :profile_image, "Image" %>
+          <%= f.attachment_field :profile_image, class: "mb-3 d-block" %>
+          <%= f.label :introduction, "Introduction" %>
+          <%= f.text_area :introduction, class: "form-control mb-3" %>
+          <%= f.submit class: "btn btn-secondary" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
