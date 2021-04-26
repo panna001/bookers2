@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
-  before_action :set_new_book
-  before_action :set_user
+  before_action :set_new_book, only:[:show, :index]
+  before_action :set_user, only:[:show, :index]
 
   def show
     @book_detail = Book.find(params[:id])
@@ -17,6 +17,20 @@ class BooksController < ApplicationController
   end
 
   def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    @book.update(book_params)
+    redirect_to book_path(@book)
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path
+
   end
 
   private
