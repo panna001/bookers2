@@ -3,12 +3,11 @@ class BooksController < ApplicationController
   before_action :set_user
 
   def show
+    @book_detail = Book.find(params[:id])
   end
 
   def index
     @books = Book.all
-
-
   end
 
   def create
