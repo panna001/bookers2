@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to user_path(@user)
+      flash[:notice] = "You have updated user successfully."
     else
       @user = User.find(params[:id])
       render :edit
