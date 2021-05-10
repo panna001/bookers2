@@ -20,6 +20,14 @@
     </tr>
   </tbody>
 </table>
-<%= link_to edit_user_path(user), class: "btn btn-sm btn-outline-secondary btn-block" do %>
-  <i class="fas fa-user-cog"></i>
+<% if user == current_user %>
+  <%= link_to edit_user_path(user), class: "btn btn-sm btn-outline-secondary btn-block" do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
+<% else %>
+  <% if user.followed_by?(current_user) %>
+    <%= link_to "フォローをはずす", user_relationships_path(user), class: "btn btn-sm btn-danger", method: :delete %>
+  <% else %>
+    <%= link_to "フォローする", user_relationships_path(user), class: "btn btn-sm btn-success", method: :post %>
+  <% end %>
 <% end %>
