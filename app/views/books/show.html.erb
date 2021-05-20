@@ -22,13 +22,19 @@
               <td><%= link_to "Destroy", book_path(@book_detail), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
             <% else %>
               <td><%= render "favorites/favorite", book:@book_detail %></td>
-              <td>コメント数：<%= @book_detail.book_comments.count %></td>
+              <td class="count">コメント数：<%= @book_detail.book_comments.count %></td>
             <% end %>
           </tr>
         </tbody>
       </table>
       <div class="comments">
         <%= render "book_comments/comment", book: @book_detail, book_comment: @book_comment, comments: @comments %>
+      </div>
+      <div>
+        <%= form_with(model: [@book_detail, @book_comment]) do |f| %>
+          <%= f.text_area :comment, rows: "5", class: "form-control" %>
+          <%= f.submit "送信" %>
+        <% end %>
       </div>
     </div>
   </div>

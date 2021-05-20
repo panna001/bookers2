@@ -1,2 +1,3 @@
+$(".count").html("コメント数：<%= @book_detail.book_comments.count %>");
 $(".comments").html("<%= j( render 'book_comments/comment', book: @book_detail, book_comment: @book_comment, comments: @comments) %>");
 $(".form-control").val("");
