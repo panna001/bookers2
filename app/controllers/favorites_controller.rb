@@ -6,9 +6,9 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = current_user.favorites.find_by(book_id: params[:book_id])
-    favorite.destroy
-    redirect_back(fallback_location: root_path)
+    @book = Book.find(params[:book_id])
+    @favorite = current_user.favorites.find_by(book_id: params[:book_id])
+    @favorite.destroy
   end
 
 end
